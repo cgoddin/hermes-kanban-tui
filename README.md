@@ -10,13 +10,18 @@ starts agents, moves panes, edits cards or creates a missing board.
 ## Start in 30 seconds
 
 You need **Python 3.11+ with SQLite and curses**, a Linux or macOS terminal,
-and an existing local Hermes Kanban database. Extract the supplied source
-archive, open a shell in the extracted `herdr-kanban` directory, then:
+and an existing local Hermes Kanban database. Clone this repository, then:
 
 ```sh
+git clone https://github.com/cgoddin/hermes-kanban-tui.git
+cd hermes-kanban-tui
 python3 -c 'import curses, sqlite3'  # prerequisite check
+./bin/herdr-kanban --help
+./bin/herdr-kanban --selftest       # fictional fixtures; no existing DB needed
 ./bin/herdr-kanban
 ```
+
+The repository is named `hermes-kanban-tui`; the command remains `herdr-kanban`.
 
 That is all you need to run it. Optional: make the command available everywhere
 while keeping this directory at a stable location:
@@ -28,7 +33,7 @@ export PATH="$HOME/.local/bin:$PATH"
 herdr-kanban
 ```
 
-Run these install commands from the extracted directory. `ln -s` deliberately
+Run these install commands from the cloned source directory. `ln -s` deliberately
 refuses an existing destination: do not add `-f` or replace another installation.
 Add the `export PATH=...` line to your shell startup file only if needed.
 Moving/deleting the source directory breaks the link; no files are copied into Hermes.
@@ -143,8 +148,9 @@ cover read-only denials, selection, errors, safety, navigation, refresh, resize,
 terminal restoration and fresh user-bin install/uninstall. Verified on Linux
 with Python 3.11.16 and 3.14.9. PTY tests run on Linux only. macOS is intended
 but untested; other Python/Hermes versions are not certified. Compatibility is
-schema-based, not a claim that every Hermes release is supported. There is no
-hosted CI result or published repository associated with this source export.
+schema-based, not a claim that every Hermes release is supported. Source is
+published at [cgoddin/hermes-kanban-tui](https://github.com/cgoddin/hermes-kanban-tui).
+The verification above is local test evidence, not a hosted CI result.
 
 ## Uninstall
 
@@ -156,7 +162,7 @@ ls -l "$HOME/.local/bin/herdr-kanban"
 rm "$HOME/.local/bin/herdr-kanban"
 ```
 
-You can then delete the extracted source directory if no longer needed. Leave
+You can then delete the cloned source directory if no longer needed. Leave
 all Hermes directories and databases alone; there are no services, migrations
 or Hermes configuration changes to undo.
 
@@ -165,4 +171,6 @@ or Hermes configuration changes to undo.
 This is a curated, TUI-only source export of the original workstation tools,
 not a copy of their operational history or layout automation. See
 [PROVENANCE.md](PROVENANCE.md) for the original identity, changes and licensing
-status. No new public/open-source license is granted by this package.
+status. That record describes preparation of the export before publication;
+this repository is its public destination. No new public/open-source license
+is granted by publication.
